@@ -35,7 +35,7 @@
 
   if (height < 2) {
     const tmp = [];
-    for (let i = 0; i < width; i++) {
+    for (let i = 0; i < width + 1; i++) {
       tmp.push('○');
     }
     map.push(tmp);
@@ -80,36 +80,38 @@
 
   patterns.forEach((pattern, hoge) => {
     let result = 4;
-    pattern.forEach((line, i) => {
-      line.forEach((floor, j) => {
-        if (
-          (floor === '#' && block1[i][j] === '#') ||
-          (floor === '○' && block1[i][j] === '#')
-        ) {
-          result--;
-        }
-        if (
-          (floor === '#' && block2[i][j] === '#') ||
-          (floor === '○' && block2[i][j] === '#')
-        ) {
-          result--;
-        }
-        if (
-          (floor === '#' && block3[i][j] === '#') ||
-          (floor === '○' && block3[i][j] === '#')
-        ) {
-          result--;
-        }
-        if (
-          (floor === '#' && block4[i][j] === '#') ||
-          (floor === '○' && block4[i][j] === '#')
-        ) {
-          result--;
-        }
+    if (hoge === 0) {
+      pattern.forEach((line, i) => {
+        line.forEach((floor, j) => {
+          if (
+            (floor === '#' && block1[i][j] === '#') ||
+            (floor === '○' && block1[i][j] === '#')
+          ) {
+            result--;
+          }
+          if (
+            (floor === '#' && block2[i][j] === '#') ||
+            (floor === '○' && block2[i][j] === '#')
+          ) {
+            result--;
+          }
+          if (
+            (floor === '#' && block3[i][j] === '#') ||
+            (floor === '○' && block3[i][j] === '#')
+          ) {
+            result--;
+          }
+          if (
+            (floor === '#' && block4[i][j] === '#') ||
+            (floor === '○' && block4[i][j] === '#')
+          ) {
+            result--;
+          }
+        });
       });
-    });
-    if (result) {
-      total++;
+      if (result) {
+        total++;
+      }
     }
   });
 
